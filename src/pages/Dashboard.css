@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════════════
+   PIGEON SDR — Dashboard Page Styles
+   ═══════════════════════════════════════════════ */
+
+/* ── Greeting ── */
+.dash-greeting {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dash-greeting__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+
+.dash-greeting__sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.dash-header-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── KPI Strip ── */
+.dash-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .dash-kpi-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .dash-kpi-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Main 2-col layout ── */
+.dash-main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .dash-main {
+    grid-template-columns: 1fr;
+  }
+  .dash-right {
+    order: -1;
+  }
+}
+
+.dash-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+}
+
+.dash-attention-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* ── Pipeline funnel ── */
+.dash-funnel {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+.dash-funnel-footnote {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Quick links ── */
+.dash-quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.dash-quick-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  font-family: var(--font-ui);
+  text-align: left;
+  gap: 8px;
+}
+
+.dash-quick-link:hover {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+/* ── Live indicator ── */
+.dash-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.dash-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ── Event Detail (Drawer) ── */
+.event-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.event-detail__section {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.event-detail__section:last-child {
+  border-bottom: none;
+}
+
+.event-detail__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.event-detail__value {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

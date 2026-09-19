@@ -1,0 +1,6 @@
+/* Entry point — imports design tokens, everything else flows from there */
+@import './tokens.css';
+
+#root {
+  min-height: 100vh;
+}

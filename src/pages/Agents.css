@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════
+   PIGEON SDR — Agents Page
+   ═══════════════════════════════════════════════ */
+
+/* Infrastructure banner */
+.agents-infra-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.agents-infra-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.agents-infra-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.agents-infra-sep {
+  color: var(--text-muted);
+}
+
+.agents-infra-engine {
+  color: var(--text-secondary);
+}
+
+/* Stats strip */
+.agents-stat-strip {
+  display: flex;
+  gap: 0;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.agents-stat {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.agents-stat:last-child { border-right: none; }
+
+.agents-stat__value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.agents-stat__value--running { color: var(--success); }
+.agents-stat__value--idle    { color: var(--text-secondary); }
+.agents-stat__value--paused  { color: var(--warning); }
+
+.agents-stat__label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Agent grid */
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.agent-grid-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.agent-grid-details {
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-family: var(--font-ui);
+  border-bottom-left-radius: var(--radius-card);
+  border-bottom-right-radius: var(--radius-card);
+  background: var(--surface-card);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.agent-grid-details:hover { color: var(--accent); }
+
+/* Override agent-card border-radius when in grid cell */
+.agent-grid-cell .agent-card {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+
+/* Drawer */
+.agent-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.agent-drawer__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.agent-drawer__status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.agent-drawer__name-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agent-drawer__status-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.agent-drawer__section {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.agent-drawer__section:last-of-type { border-bottom: none; }
+
+.agent-drawer__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.agent-drawer__value {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.agent-drawer__stats-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.agent-drawer__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.agent-drawer__stat-val {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.agent-drawer__stat-key {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Engine badge row on an agent card. */
+.agent-card__engine-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.agent-card__engine-note {
+  font-size: 10px;
+  color: var(--text-muted);
+}

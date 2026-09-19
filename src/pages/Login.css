@@ -1,0 +1,769 @@
+/* ═══════════════════════════════════════════════════════
+   Pigeon SDR – Animated Characters Login / Sign-Up Page
+   Theme support: Dark & Light mode
+════════════════════════════════════════════════════════ */
+
+/* ── Base Layout ── */
+.lp-root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────────────────────────
+   THEME VARIABLES
+────────────────────────────────────────────────────────── */
+
+
+.lp-root.theme-light {
+  --lp-bg-right: #f1f4f9;
+  --lp-bg-left: linear-gradient(145deg, #171131 0%, #201548 40%, #2e1a5a 100%);
+  --lp-grid-color: rgba(255, 255, 255, 0.03);
+  --lp-card-bg: #ffffff;
+  --lp-card-border: #e2e8f0;
+  --lp-card-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --lp-text-primary: #0f172a;
+  --lp-text-secondary: #475569;
+  --lp-text-muted: #64748b;
+  --lp-border: #e2e8f0;
+  --lp-border-hover: #cbd5e1;
+  --lp-input-bg: #f8fafc;
+  --lp-input-border: #cbd5e1;
+  --lp-input-text: #0f172a;
+  --lp-input-placeholder: #94a3b8;
+  --lp-input-icon: #64748b;
+  --lp-pill-switch-bg: #f1f5f9;
+  --lp-pill-switch-active-bg: #4f46e5;
+  --lp-pill-switch-active-text: #ffffff;
+  --lp-pill-switch-inactive-text: #64748b;
+  --lp-brand-bg: transparent;
+  --lp-brand-text: #ffffff;
+  --lp-brand-sub: #a78bfa;
+  --lp-tagline-text: #ffffff;
+  --lp-tagline-sub: rgba(255, 255, 255, 0.65);
+  --lp-footer-text: rgba(255, 255, 255, 0.45);
+  --lp-google-bg: #ffffff;
+  --lp-google-border: #e2e8f0;
+  --lp-google-text: #0f172a;
+  --lp-google-hover: #f8fafc;
+  --lp-google-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --lp-google-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --lp-autofill-bg: #ffffff;
+  --lp-theme-selector-bg: #e2e8f0;
+  --lp-theme-selector-border: #cbd5e1;
+  --lp-theme-btn-active-bg: #4f46e5;
+  --lp-theme-btn-active-text: #ffffff;
+  --lp-theme-btn-inactive-text: #64748b;
+  --lp-blob-1: rgba(167, 139, 250, 0.22);
+  --lp-blob-2: rgba(99, 102, 241, 0.15);
+}
+
+/* ──────────────────────────────────────────────────────────
+   LEFT PANEL (ANIMATED CHARACTERS STAGE)
+────────────────────────────────────────────────────────── */
+.lp-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  background: var(--lp-bg-left);
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+/* Grid pattern */
+.lp-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--lp-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lp-grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Brand */
+.lp-left .lp-brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 25;
+}
+
+.lp-brand-emblem {
+  width: 4.6rem;
+  height: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lp-brand-emblem:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.lp-brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 20px rgba(167, 139, 250, 0.6)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+  transition: filter 0.3s ease;
+}
+
+.lp-brand-emblem:hover .lp-brand-logo {
+  filter: drop-shadow(0 8px 28px rgba(167, 139, 250, 0.85)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.5));
+}
+
+.lp-brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lp-brand-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1;
+}
+
+.lp-brand-name {
+  color: var(--lp-brand-text);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.035em;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.lp-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #ffffff;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  line-height: 1;
+}
+
+.lp-brand-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #c4b5fd;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Stage */
+.lp-stage-wrap {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 260px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.lp-stage {
+  position: relative;
+  width: 450px;
+  height: 400px;
+  transform: scale(0.65);
+  transform-origin: bottom center;
+}
+
+/* ── Characters ── */
+.lp-char {
+  position: absolute;
+  bottom: 0;
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+.lp-eyes {
+  position: absolute;
+  display: flex;
+  transition: all 0.2s ease-out;
+}
+
+/* Purple Character */
+.lp-purple {
+  left: 55px;
+  width: 160px;
+  background-color: #8B5CF6;
+  border-radius: 12px 12px 0 0;
+  z-index: 1;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.15),
+    4px 0 24px rgba(0,0,0,0.25);
+}
+
+/* Black Character */
+.lp-black {
+  left: 205px;
+  width: 110px;
+  height: 310px;
+  background-color: #1a1a2e;
+  border-radius: 10px 10px 0 0;
+  z-index: 2;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.08),
+    4px 0 20px rgba(0,0,0,0.3);
+}
+
+/* Orange Character */
+.lp-orange {
+  left: 0;
+  width: 210px;
+  height: 185px;
+  background-color: #FF9B6B;
+  border-radius: 110px 110px 0 0;
+  z-index: 3;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.15),
+    0 -4px 20px rgba(0,0,0,0.15);
+}
+
+/* Yellow Character */
+.lp-yellow {
+  left: 270px;
+  width: 130px;
+  height: 220px;
+  background-color: #FADB5F;
+  border-radius: 65px 65px 0 0;
+  z-index: 4;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.18),
+    0 -4px 20px rgba(0,0,0,0.15);
+}
+
+/* Mouth */
+.lp-mouth {
+  position: absolute;
+  width: 72px;
+  height: 4px;
+  background-color: #2D2D2D;
+  border-radius: 9999px;
+  transition: all 0.2s ease-out;
+}
+
+/* Left Tagline */
+.lp-left-tagline {
+  position: relative;
+  z-index: 20;
+  margin-bottom: 1.5rem;
+}
+
+.lp-hero-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.2;
+}
+
+.lp-dot-accent {
+  color: #818cf8;
+}
+
+.lp-hero-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(226, 232, 240, 0.82);
+  max-width: 440px;
+  margin: 0;
+}
+
+/* Footer links */
+.lp-left-footer {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  position: relative;
+  z-index: 20;
+}
+
+/* Decorative Blobs */
+.lp-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.lp-blob-1 {
+  top: 10%;
+  right: 10%;
+  width: 320px;
+  height: 320px;
+  background: var(--lp-blob-1);
+}
+
+.lp-blob-2 {
+  bottom: 15%;
+  left: 5%;
+  width: 380px;
+  height: 380px;
+  background: var(--lp-blob-2);
+}
+
+/* ──────────────────────────────────────────────────────────
+   RIGHT PANEL (FORM & AUTH)
+────────────────────────────────────────────────────────── */
+.lp-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background: var(--lp-bg-right);
+  transition: background 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.lp-form-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--lp-card-bg);
+  border: 1px solid var(--lp-card-border);
+  box-shadow: var(--lp-card-shadow);
+  border-radius: 24px;
+  padding: 2rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: all 0.3s ease;
+}
+
+/* Mobile brand (hidden on desktop) */
+.lp-brand-mobile {
+  justify-content: center;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+/* Header */
+.lp-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Aesthetic Title ── */
+.lp-aesthetic-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--lp-text-primary);
+  text-align: center;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.15;
+}
+
+.lp-aesthetic-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--lp-text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ── Segmented Sign In / Sign Up Pills ── */
+.lp-mode-pills {
+  display: flex;
+  background: var(--lp-pill-switch-bg);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--lp-card-border);
+}
+
+.lp-mode-pill {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--lp-pill-switch-inactive-text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lp-mode-pill.active {
+  background: var(--lp-pill-switch-active-bg);
+  color: var(--lp-pill-switch-active-text);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.32);
+}
+
+/* ── Form ── */
+.lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lp-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lp-pill-wrap {
+  border-radius: 9999px;
+}
+
+.lp-input-pill {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 1rem 0 2.6rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.theme-light .lp-input-pill {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 500;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.theme-light .lp-input-pill::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.theme-light .lp-input-pill:focus {
+  background: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.16);
+}
+
+.theme-dark .lp-input-pill {
+  background: #1e263d;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.theme-dark .lp-input-pill::placeholder {
+  color: #64748b;
+}
+
+.theme-dark .lp-input-pill:focus {
+  background: #242e49;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.lp-pill-wrap .lp-input-icon {
+  position: absolute;
+  left: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--lp-input-icon);
+}
+
+.lp-svg-icon {
+  display: block;
+}
+
+/* Autofill styling fix */
+.lp-input-pill:-webkit-autofill,
+.lp-input-pill:-webkit-autofill:hover, 
+.lp-input-pill:-webkit-autofill:focus,
+.lp-input-pill:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--lp-input-bg) inset !important;
+  -webkit-text-fill-color: var(--lp-input-text) !important;
+  caret-color: var(--lp-input-text);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Password toggle inside pill */
+.lp-pill-wrap .lp-pw-toggle {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lp-input-icon);
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: color 0.2s;
+  z-index: 1;
+}
+
+.lp-pill-wrap .lp-pw-toggle:hover {
+  color: var(--lp-text-primary);
+}
+
+/* Row between (remember me / forgot) */
+.lp-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-remember-row {
+  padding: 0 0.5rem;
+  margin-top: -0.25rem;
+}
+
+.lp-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  color: var(--lp-text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.lp-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #4f46e5;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.lp-link {
+  font-size: 0.84rem;
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.lp-link:hover { color: #4338ca; text-decoration: underline; }
+
+/* Alerts */
+.lp-alert {
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  animation: lp-shake 0.35s ease;
+}
+
+.lp-alert-error {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #fca5a5;
+}
+
+.lp-alert-success {
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: #6ee7b7;
+}
+
+@keyframes lp-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+/* ── Centered Pill LOGIN Button ── */
+.lp-submit-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.lp-submit-pill {
+  width: 100%;
+  height: 3rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-submit-pill:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+}
+
+.lp-submit-pill:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lp-submit-pill:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Social Platforms Row (from screenshot) ── */
+.lp-social-section {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.lp-social-title {
+  font-size: 0.9rem;
+  color: var(--lp-text-secondary);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.lp-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+}
+
+.lp-social-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  outline: none;
+}
+
+.theme-light .lp-social-circle {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.theme-light .lp-social-circle:hover {
+  border-color: #4f46e5;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.14);
+}
+
+.theme-dark .lp-social-circle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-dark .lp-social-circle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #6366f1;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Mode switch */
+.lp-switch-mode {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--lp-text-secondary);
+  margin-top: 1rem;
+}
+
+.lp-link-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0;
+  transition: color 0.2s;
+}
+.lp-link-btn:hover { color: #4338ca; text-decoration: underline; }
+
+
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE DESIGN
+────────────────────────────────────────────────────────── */
+@media (max-width: 1080px) and (min-width: 850px) {
+  .lp-stage {
+    transform: scale(0.82);
+    transform-origin: bottom center;
+  }
+  .lp-left {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 849px) {
+  .lp-root {
+    grid-template-columns: 1fr;
+  }
+  .lp-left {
+    display: none;
+  }
+  .lp-brand-mobile {
+    display: flex;
+  }
+  .lp-right {
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lp-form-wrap {
+    max-width: 100%;
+  }
+}

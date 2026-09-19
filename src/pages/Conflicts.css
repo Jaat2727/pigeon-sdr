@@ -1,0 +1,309 @@
+/* ═══════════════════════════════════════════════
+   CONFLICT CENTER — Conflicts.css
+   ═══════════════════════════════════════════════ */
+
+/* Summary strip */
+.conf-summary-strip {
+  display: flex;
+  gap: 0;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.conf-summary-cell {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.conf-summary-cell:last-child { border-right: none; }
+
+.conf-summary-cell--total .conf-summary-value { color: var(--warning); }
+
+.conf-summary-value {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.conf-summary-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Card grid */
+.conf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Conflict card */
+.conf-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.conf-card:hover {
+  box-shadow: var(--shadow-raised);
+}
+
+/* Prospect header */
+.conf-card__prospect {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.conf-card__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--violet) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.conf-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.conf-card__type-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--warning);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--warning-soft);
+  padding: 2px 7px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Campaign conflict visual */
+.conf-card__campaigns {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.conf-card__campaign {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.conf-card__campaign--a {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-bottom: none;
+}
+
+.conf-card__campaign--b {
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+}
+
+.conf-card__vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: var(--warning-soft);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Meta */
+.conf-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conf-card__meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conf-card__meta-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.conf-card__meta-value {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.conf-card__rec {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.conf-card__resolve-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Drawer */
+.conf-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.conf-drawer__prospect {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.conf-drawer__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.conf-drawer__sub {
+  font-size: 11px;
+  color: var(--warning);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.conf-drawer-section {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.conf-drawer-section:last-of-type { border-bottom: none; }
+
+.conf-drawer-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.conf-drawer-campaigns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conf-drawer-camp {
+  padding: 12px 14px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.conf-drawer-camp__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.conf-drawer-camp__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.conf-drawer-camp__priority {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.conf-drawer-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 12px;
+}
+
+.conf-drawer-detail-row:last-child { border-bottom: none; }
+.conf-drawer-detail-row span:first-child { color: var(--text-muted); }
+.conf-drawer-detail-row span:last-child { color: var(--text-primary); font-weight: 500; }
+
+/* Resolution options */
+.conf-drawer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conf-drawer-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.conf-drawer-option:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+
+.conf-drawer-option--selected {
+  border-color: var(--accent-light);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.conf-drawer-option input[type="radio"] {
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}

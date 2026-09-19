@@ -1,0 +1,11 @@
+# Railway build plan. Pinned so a Node version bump on the platform cannot
+# silently change what this service runs on.
+
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm ci --omit=dev || npm install --omit=dev"]
+
+[start]
+cmd = "npm start"

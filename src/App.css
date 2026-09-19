@@ -1,0 +1,39 @@
+/* 
+ * ===== APP.CSS =====
+ * Global utility classes for App.jsx (loading screen).
+ * All design tokens and global resets are in tokens.css.
+ */
+
+/* ── Loading screen (shown while checking auth) ── */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 1.25rem;
+  background: var(--canvas);
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}

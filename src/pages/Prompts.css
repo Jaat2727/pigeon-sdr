@@ -1,0 +1,302 @@
+/* ═══════════════════════════════════════════════
+   Prompts — Version History & Comparison
+   ═══════════════════════════════════════════════ */
+
+.prompts-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fade-in var(--duration-normal) var(--ease-default);
+}
+
+/* ── Header ── */
+.prompts-header {
+  margin-bottom: var(--sp-5);
+}
+
+.prompts-header h1 {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.prompts-header-sub {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.prompts-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-3);
+}
+
+/* ── Tab Bar ── */
+.prompts-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: var(--sp-5);
+}
+
+.prompts-tab {
+  padding: 12px 20px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  font-family: var(--font-ui);
+  white-space: nowrap;
+}
+
+.prompts-tab:hover {
+  color: var(--text-primary);
+}
+
+.prompts-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Body Layout ── */
+.prompts-body {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+/* ── Version History (Left) ── */
+.prompts-history-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.prompts-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prompts-version-card {
+  background: var(--surface-card);
+  border: 2px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.prompts-version-card:hover {
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(112, 144, 176, 0.08);
+}
+
+.prompts-version-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.prompts-version-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.prompts-version-label {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.prompts-version-author {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* Version status pills */
+.pv-status {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.pv-status--active {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.pv-status--draft {
+  background: var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.pv-status--rolled-back {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.pv-status--archived {
+  background: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+/* ── Comparison Panel (Right) ── */
+.prompts-compare {
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.prompts-compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.prompts-compare-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.prompts-compare-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.prompts-compare-selector select {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--canvas);
+  cursor: pointer;
+  outline: none;
+}
+
+/* ── Side-by-Side Panels ── */
+.prompts-diff-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 300px;
+}
+
+.prompts-diff-col {
+  padding: var(--sp-4) var(--sp-5);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.prompts-diff-col:last-child {
+  border-right: none;
+}
+
+.prompts-diff-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-3);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.prompts-diff-col-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.prompts-diff-col-date {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.prompts-diff-col-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.prompts-diff-content {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Diff highlights */
+.diff-removed {
+  background: #FEE2E2;
+  color: var(--danger);
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin: 6px 0;
+  display: block;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  border-left: 3px solid var(--danger);
+}
+
+.diff-added {
+  background: #D1FAE5;
+  color: #065F46;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin: 6px 0;
+  display: block;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  border-left: 3px solid var(--success);
+}
+
+/* ── Footer Actions ── */
+.prompts-compare-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-5);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--canvas);
+}
+
+.prompts-compare-footer-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prompts-compare-footer-actions {
+  display: flex;
+  gap: var(--sp-3);
+}

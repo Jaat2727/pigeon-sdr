@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════════
+   APPROVAL CENTER — ReviewQueue.css
+   ═══════════════════════════════════════════════ */
+
+/* Summary strip */
+.aq-summary-strip {
+  display: flex;
+  gap: 0;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.aq-summary-cell {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.aq-summary-cell:last-child { border-right: none; }
+
+.aq-summary-value {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.aq-summary-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.aq-summary-cell--danger .aq-summary-value { color: var(--danger); }
+.aq-summary-cell--warning .aq-summary-value { color: var(--warning); }
+
+/* Inbox */
+.aq-inbox {
+  overflow: hidden;
+}
+
+.aq-inbox-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.aq-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--duration-fast) var(--ease-default);
+}
+
+.aq-row:last-child { border-bottom: none; }
+.aq-row:hover { background: var(--surface-raised); }
+
+.aq-row--high {
+  border-left: 3px solid var(--danger);
+}
+
+/* Risk dot */
+.aq-risk-dot {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.aq-risk-label { font-size: 10px; }
+
+/* Cell */
+.aq-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.aq-agent {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aq-type {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.aq-primary {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aq-secondary {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aq-reason {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.aq-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Drawer */
+.aq-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.aq-drawer-meta {
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 16px;
+}
+
+.aq-drawer-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.aq-drawer-meta-row:last-child { border-bottom: none; }
+
+.aq-drawer-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  min-width: 80px;
+}
+
+.aq-drawer-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.aq-drawer-section {
+  margin-bottom: 20px;
+}
+
+.aq-drawer-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.aq-drawer-content {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  background: var(--surface-raised);
+  padding: 12px 14px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+
+.aq-drawer-suggestion {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.aq-drawer-actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
