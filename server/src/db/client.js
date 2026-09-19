@@ -16,6 +16,7 @@ export const supabase = dbReady
   ? createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
       auth: { persistSession: false, autoRefreshToken: false },
       global: { headers: { 'x-application-name': 'pigeon-sdr-server' } },
+      realtime: { transport: globalThis.WebSocket ?? function NoRealtime() {} },
     })
   : null;
 
